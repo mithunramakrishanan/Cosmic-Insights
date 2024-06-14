@@ -1,0 +1,663 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C08609122C1AD933000CF08C /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08609112C1AD933000CF08C /* Helper.swift */; };
+		C08609142C1AD99D000CF08C /* Ext+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08609132C1AD99D000CF08C /* Ext+Enum.swift */; };
+		C091C6F22C1A173F00007066 /* HealthTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C091C6F12C1A173F00007066 /* HealthTabView.swift */; };
+		C091C6F42C1A190500007066 /* BrowseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C091C6F32C1A190500007066 /* BrowseView.swift */; };
+		C0BE1E432C196DAA0086F73F /* CosmicInsightsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BE1E422C196DAA0086F73F /* CosmicInsightsApp.swift */; };
+		C0BE1E452C196DAA0086F73F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BE1E442C196DAA0086F73F /* ContentView.swift */; };
+		C0BE1E472C196DB10086F73F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0BE1E462C196DB10086F73F /* Assets.xcassets */; };
+		C0BE1E4A2C196DB10086F73F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0BE1E492C196DB10086F73F /* Preview Assets.xcassets */; };
+		C0BE1E542C196DB20086F73F /* CosmicInsightsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BE1E532C196DB20086F73F /* CosmicInsightsTests.swift */; };
+		C0BE1E5E2C196DB20086F73F /* CosmicInsightsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BE1E5D2C196DB20086F73F /* CosmicInsightsUITests.swift */; };
+		C0BE1E602C196DB20086F73F /* CosmicInsightsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BE1E5F2C196DB20086F73F /* CosmicInsightsUITestsLaunchTests.swift */; };
+		C0BE1E6D2C197E720086F73F /* HealthStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BE1E6C2C197E720086F73F /* HealthStoreManager.swift */; };
+		C0BE1E702C198B460086F73F /* HealthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BE1E6F2C198B460086F73F /* HealthModel.swift */; };
+		C0BE1E722C19B74D0086F73F /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BE1E712C19B74D0086F73F /* DetailView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C0BE1E502C196DB20086F73F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C0BE1E372C196DAA0086F73F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C0BE1E3E2C196DAA0086F73F;
+			remoteInfo = CosmicInsights;
+		};
+		C0BE1E5A2C196DB20086F73F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C0BE1E372C196DAA0086F73F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C0BE1E3E2C196DAA0086F73F;
+			remoteInfo = CosmicInsights;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C08609112C1AD933000CF08C /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		C08609132C1AD99D000CF08C /* Ext+Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+Enum.swift"; sourceTree = "<group>"; };
+		C091C6F12C1A173F00007066 /* HealthTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTabView.swift; sourceTree = "<group>"; };
+		C091C6F32C1A190500007066 /* BrowseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseView.swift; sourceTree = "<group>"; };
+		C0BE1E3F2C196DAA0086F73F /* CosmicInsights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CosmicInsights.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0BE1E422C196DAA0086F73F /* CosmicInsightsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmicInsightsApp.swift; sourceTree = "<group>"; };
+		C0BE1E442C196DAA0086F73F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C0BE1E462C196DB10086F73F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C0BE1E492C196DB10086F73F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C0BE1E4F2C196DB20086F73F /* CosmicInsightsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CosmicInsightsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0BE1E532C196DB20086F73F /* CosmicInsightsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmicInsightsTests.swift; sourceTree = "<group>"; };
+		C0BE1E592C196DB20086F73F /* CosmicInsightsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CosmicInsightsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0BE1E5D2C196DB20086F73F /* CosmicInsightsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmicInsightsUITests.swift; sourceTree = "<group>"; };
+		C0BE1E5F2C196DB20086F73F /* CosmicInsightsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmicInsightsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C0BE1E6C2C197E720086F73F /* HealthStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStoreManager.swift; sourceTree = "<group>"; };
+		C0BE1E6E2C197E980086F73F /* CosmicInsights.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CosmicInsights.entitlements; sourceTree = "<group>"; };
+		C0BE1E6F2C198B460086F73F /* HealthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthModel.swift; sourceTree = "<group>"; };
+		C0BE1E712C19B74D0086F73F /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C0BE1E3C2C196DAA0086F73F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0BE1E4C2C196DB20086F73F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0BE1E562C196DB20086F73F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C0BE1E362C196DAA0086F73F = {
+			isa = PBXGroup;
+			children = (
+				C0BE1E412C196DAA0086F73F /* CosmicInsights */,
+				C0BE1E522C196DB20086F73F /* CosmicInsightsTests */,
+				C0BE1E5C2C196DB20086F73F /* CosmicInsightsUITests */,
+				C0BE1E402C196DAA0086F73F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C0BE1E402C196DAA0086F73F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C0BE1E3F2C196DAA0086F73F /* CosmicInsights.app */,
+				C0BE1E4F2C196DB20086F73F /* CosmicInsightsTests.xctest */,
+				C0BE1E592C196DB20086F73F /* CosmicInsightsUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C0BE1E412C196DAA0086F73F /* CosmicInsights */ = {
+			isa = PBXGroup;
+			children = (
+				C0EC081A2C1BF99D00C4D05A /* Utils */,
+				C0EC081B2C1BF9B100C4D05A /* Model */,
+				C0EC081D2C1BF9BF00C4D05A /* View */,
+				C0EC081C2C1BF9B600C4D05A /* ViewModel */,
+				C0BE1E6E2C197E980086F73F /* CosmicInsights.entitlements */,
+				C0BE1E422C196DAA0086F73F /* CosmicInsightsApp.swift */,
+				C0BE1E462C196DB10086F73F /* Assets.xcassets */,
+				C0BE1E482C196DB10086F73F /* Preview Content */,
+			);
+			path = CosmicInsights;
+			sourceTree = "<group>";
+		};
+		C0BE1E482C196DB10086F73F /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				C0BE1E492C196DB10086F73F /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C0BE1E522C196DB20086F73F /* CosmicInsightsTests */ = {
+			isa = PBXGroup;
+			children = (
+				C0BE1E532C196DB20086F73F /* CosmicInsightsTests.swift */,
+			);
+			path = CosmicInsightsTests;
+			sourceTree = "<group>";
+		};
+		C0BE1E5C2C196DB20086F73F /* CosmicInsightsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C0BE1E5D2C196DB20086F73F /* CosmicInsightsUITests.swift */,
+				C0BE1E5F2C196DB20086F73F /* CosmicInsightsUITestsLaunchTests.swift */,
+			);
+			path = CosmicInsightsUITests;
+			sourceTree = "<group>";
+		};
+		C0EC081A2C1BF99D00C4D05A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C08609112C1AD933000CF08C /* Helper.swift */,
+				C08609132C1AD99D000CF08C /* Ext+Enum.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		C0EC081B2C1BF9B100C4D05A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C0BE1E6F2C198B460086F73F /* HealthModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C0EC081C2C1BF9B600C4D05A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C0BE1E6C2C197E720086F73F /* HealthStoreManager.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C0EC081D2C1BF9BF00C4D05A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C091C6F12C1A173F00007066 /* HealthTabView.swift */,
+				C0BE1E442C196DAA0086F73F /* ContentView.swift */,
+				C0BE1E712C19B74D0086F73F /* DetailView.swift */,
+				C091C6F32C1A190500007066 /* BrowseView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C0BE1E3E2C196DAA0086F73F /* CosmicInsights */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0BE1E632C196DB20086F73F /* Build configuration list for PBXNativeTarget "CosmicInsights" */;
+			buildPhases = (
+				C0BE1E3B2C196DAA0086F73F /* Sources */,
+				C0BE1E3C2C196DAA0086F73F /* Frameworks */,
+				C0BE1E3D2C196DAA0086F73F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CosmicInsights;
+			productName = CosmicInsights;
+			productReference = C0BE1E3F2C196DAA0086F73F /* CosmicInsights.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C0BE1E4E2C196DB20086F73F /* CosmicInsightsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0BE1E662C196DB20086F73F /* Build configuration list for PBXNativeTarget "CosmicInsightsTests" */;
+			buildPhases = (
+				C0BE1E4B2C196DB20086F73F /* Sources */,
+				C0BE1E4C2C196DB20086F73F /* Frameworks */,
+				C0BE1E4D2C196DB20086F73F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C0BE1E512C196DB20086F73F /* PBXTargetDependency */,
+			);
+			name = CosmicInsightsTests;
+			productName = CosmicInsightsTests;
+			productReference = C0BE1E4F2C196DB20086F73F /* CosmicInsightsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C0BE1E582C196DB20086F73F /* CosmicInsightsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0BE1E692C196DB20086F73F /* Build configuration list for PBXNativeTarget "CosmicInsightsUITests" */;
+			buildPhases = (
+				C0BE1E552C196DB20086F73F /* Sources */,
+				C0BE1E562C196DB20086F73F /* Frameworks */,
+				C0BE1E572C196DB20086F73F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C0BE1E5B2C196DB20086F73F /* PBXTargetDependency */,
+			);
+			name = CosmicInsightsUITests;
+			productName = CosmicInsightsUITests;
+			productReference = C0BE1E592C196DB20086F73F /* CosmicInsightsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C0BE1E372C196DAA0086F73F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					C0BE1E3E2C196DAA0086F73F = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					C0BE1E4E2C196DB20086F73F = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = C0BE1E3E2C196DAA0086F73F;
+					};
+					C0BE1E582C196DB20086F73F = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = C0BE1E3E2C196DAA0086F73F;
+					};
+				};
+			};
+			buildConfigurationList = C0BE1E3A2C196DAA0086F73F /* Build configuration list for PBXProject "CosmicInsights" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C0BE1E362C196DAA0086F73F;
+			productRefGroup = C0BE1E402C196DAA0086F73F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C0BE1E3E2C196DAA0086F73F /* CosmicInsights */,
+				C0BE1E4E2C196DB20086F73F /* CosmicInsightsTests */,
+				C0BE1E582C196DB20086F73F /* CosmicInsightsUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C0BE1E3D2C196DAA0086F73F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0BE1E4A2C196DB10086F73F /* Preview Assets.xcassets in Resources */,
+				C0BE1E472C196DB10086F73F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0BE1E4D2C196DB20086F73F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0BE1E572C196DB20086F73F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C0BE1E3B2C196DAA0086F73F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0BE1E452C196DAA0086F73F /* ContentView.swift in Sources */,
+				C0BE1E6D2C197E720086F73F /* HealthStoreManager.swift in Sources */,
+				C091C6F42C1A190500007066 /* BrowseView.swift in Sources */,
+				C0BE1E432C196DAA0086F73F /* CosmicInsightsApp.swift in Sources */,
+				C0BE1E722C19B74D0086F73F /* DetailView.swift in Sources */,
+				C08609142C1AD99D000CF08C /* Ext+Enum.swift in Sources */,
+				C091C6F22C1A173F00007066 /* HealthTabView.swift in Sources */,
+				C0BE1E702C198B460086F73F /* HealthModel.swift in Sources */,
+				C08609122C1AD933000CF08C /* Helper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0BE1E4B2C196DB20086F73F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0BE1E542C196DB20086F73F /* CosmicInsightsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0BE1E552C196DB20086F73F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0BE1E5E2C196DB20086F73F /* CosmicInsightsUITests.swift in Sources */,
+				C0BE1E602C196DB20086F73F /* CosmicInsightsUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C0BE1E512C196DB20086F73F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C0BE1E3E2C196DAA0086F73F /* CosmicInsights */;
+			targetProxy = C0BE1E502C196DB20086F73F /* PBXContainerItemProxy */;
+		};
+		C0BE1E5B2C196DB20086F73F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C0BE1E3E2C196DAA0086F73F /* CosmicInsights */;
+			targetProxy = C0BE1E5A2C196DB20086F73F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		C0BE1E612C196DB20086F73F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C0BE1E622C196DB20086F73F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C0BE1E642C196DB20086F73F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CosmicInsights/CosmicInsights.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"CosmicInsights/Preview Content\"";
+				DEVELOPMENT_TEAM = UGG4H4P58K;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "This application wants to access health details";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.CosmicInsights;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C0BE1E652C196DB20086F73F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CosmicInsights/CosmicInsights.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"CosmicInsights/Preview Content\"";
+				DEVELOPMENT_TEAM = UGG4H4P58K;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "This application wants to access health details";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.CosmicInsights;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C0BE1E672C196DB20086F73F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UGG4H4P58K;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.CosmicInsightsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CosmicInsights.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CosmicInsights";
+			};
+			name = Debug;
+		};
+		C0BE1E682C196DB20086F73F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UGG4H4P58K;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.CosmicInsightsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CosmicInsights.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CosmicInsights";
+			};
+			name = Release;
+		};
+		C0BE1E6A2C196DB20086F73F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UGG4H4P58K;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.CosmicInsightsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CosmicInsights;
+			};
+			name = Debug;
+		};
+		C0BE1E6B2C196DB20086F73F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UGG4H4P58K;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.CosmicInsightsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CosmicInsights;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C0BE1E3A2C196DAA0086F73F /* Build configuration list for PBXProject "CosmicInsights" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0BE1E612C196DB20086F73F /* Debug */,
+				C0BE1E622C196DB20086F73F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C0BE1E632C196DB20086F73F /* Build configuration list for PBXNativeTarget "CosmicInsights" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0BE1E642C196DB20086F73F /* Debug */,
+				C0BE1E652C196DB20086F73F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C0BE1E662C196DB20086F73F /* Build configuration list for PBXNativeTarget "CosmicInsightsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0BE1E672C196DB20086F73F /* Debug */,
+				C0BE1E682C196DB20086F73F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C0BE1E692C196DB20086F73F /* Build configuration list for PBXNativeTarget "CosmicInsightsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0BE1E6A2C196DB20086F73F /* Debug */,
+				C0BE1E6B2C196DB20086F73F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C0BE1E372C196DAA0086F73F /* Project object */;
+}

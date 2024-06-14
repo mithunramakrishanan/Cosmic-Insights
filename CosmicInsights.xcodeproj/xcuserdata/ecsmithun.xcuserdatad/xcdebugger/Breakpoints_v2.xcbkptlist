@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "528B71B3-238C-4CC2-B963-DFBCC7B0028B"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8805B916-3C39-4D49-8B63-C5B2C52028DF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CosmicInsights/DetailView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "weekSortHealthDatas"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "8805B916-3C39-4D49-8B63-C5B2C52028DF - 1d452dafe28acc8e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CosmicInsights.DetailView.weekSortHealthDatas.getter : Swift.Array&lt;CosmicInsights.HealthDetailData&gt;"
+                  moduleName = "CosmicInsights"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ecsmithun/Documents/CosmicInsights/CosmicInsights/DetailView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "91">
+               </Location>
+               <Location
+                  uuid = "8805B916-3C39-4D49-8B63-C5B2C52028DF - fee0883d64ce1261"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (CosmicInsights.HealthDetailData, CosmicInsights.HealthDetailData) -&gt; Swift.Bool in CosmicInsights.DetailView.weekSortHealthDatas.getter : Swift.Array&lt;CosmicInsights.HealthDetailData&gt;"
+                  moduleName = "CosmicInsights"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ecsmithun/Documents/CosmicInsights/CosmicInsights/DetailView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "122">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "20266613-F555-408A-84DF-17933E2DF7ED"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CosmicInsights/DetailView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "20266613-F555-408A-84DF-17933E2DF7ED - f8cb8991e39aa90c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(Swift.Optional&lt;CosmicInsights.TodayDetailHeaderView&gt;, &lt;&lt;opaque return type of SwiftUI.View.pickerStyle&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.PickerStyle&gt;(&#x3c4;_1_0) -&gt; some&gt;&gt;.0, SwiftUI._ConditionalContent&lt;SwiftUI._ConditionalContent&lt;CosmicInsights.HealthDetailListView, CosmicInsights.HealthDetailChartView&gt;, CosmicInsights.HealthDetailGraphView&gt;)&gt; in CosmicInsights.DetailView.body.getter : some"
+                  moduleName = "CosmicInsights"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ecsmithun/Documents/CosmicInsights/CosmicInsights/DetailView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "770">
+               </Location>
+               <Location
+                  uuid = "20266613-F555-408A-84DF-17933E2DF7ED - f8cb8991e39aa90c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(Swift.Optional&lt;CosmicInsights.TodayDetailHeaderView&gt;, &lt;&lt;opaque return type of SwiftUI.View.pickerStyle&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.PickerStyle&gt;(&#x3c4;_1_0) -&gt; some&gt;&gt;.0, SwiftUI._ConditionalContent&lt;SwiftUI._ConditionalContent&lt;CosmicInsights.HealthDetailListView, CosmicInsights.HealthDetailChartView&gt;, CosmicInsights.HealthDetailGraphView&gt;)&gt; in CosmicInsights.DetailView.body.getter : some"
+                  moduleName = "CosmicInsights"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ecsmithun/Documents/CosmicInsights/CosmicInsights/DetailView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "1110">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
