@@ -14,7 +14,15 @@ struct CosmicInsightsApp: App {
     
     var body: some Scene {
         WindowGroup {
-            HealthTabView().environmentObject(healthManager)
+            
+            if !healthManager.loginSuccess {
+                AppleSignInView().environmentObject(healthManager)
+            }
+            else {
+                HealthTabView().environmentObject(healthManager)
+            }
+            
+           
         }
     }
 }

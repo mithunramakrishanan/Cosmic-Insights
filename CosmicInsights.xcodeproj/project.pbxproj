@@ -12,7 +12,7 @@
 		C091C6F22C1A173F00007066 /* HealthTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C091C6F12C1A173F00007066 /* HealthTabView.swift */; };
 		C091C6F42C1A190500007066 /* BrowseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C091C6F32C1A190500007066 /* BrowseView.swift */; };
 		C0BE1E432C196DAA0086F73F /* CosmicInsightsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BE1E422C196DAA0086F73F /* CosmicInsightsApp.swift */; };
-		C0BE1E452C196DAA0086F73F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BE1E442C196DAA0086F73F /* ContentView.swift */; };
+		C0BE1E452C196DAA0086F73F /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BE1E442C196DAA0086F73F /* SummaryView.swift */; };
 		C0BE1E472C196DB10086F73F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0BE1E462C196DB10086F73F /* Assets.xcassets */; };
 		C0BE1E4A2C196DB10086F73F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0BE1E492C196DB10086F73F /* Preview Assets.xcassets */; };
 		C0BE1E542C196DB20086F73F /* CosmicInsightsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BE1E532C196DB20086F73F /* CosmicInsightsTests.swift */; };
@@ -21,6 +21,8 @@
 		C0BE1E6D2C197E720086F73F /* HealthStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BE1E6C2C197E720086F73F /* HealthStoreManager.swift */; };
 		C0BE1E702C198B460086F73F /* HealthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BE1E6F2C198B460086F73F /* HealthModel.swift */; };
 		C0BE1E722C19B74D0086F73F /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BE1E712C19B74D0086F73F /* DetailView.swift */; };
+		C0EC08212C1C196F00C4D05A /* FilteredHealthListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EC08202C1C196F00C4D05A /* FilteredHealthListView.swift */; };
+		C0EC08232C1C2FD500C4D05A /* AppleSignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EC08222C1C2FD500C4D05A /* AppleSignInView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +49,7 @@
 		C091C6F32C1A190500007066 /* BrowseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseView.swift; sourceTree = "<group>"; };
 		C0BE1E3F2C196DAA0086F73F /* CosmicInsights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CosmicInsights.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0BE1E422C196DAA0086F73F /* CosmicInsightsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmicInsightsApp.swift; sourceTree = "<group>"; };
-		C0BE1E442C196DAA0086F73F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C0BE1E442C196DAA0086F73F /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 		C0BE1E462C196DB10086F73F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C0BE1E492C196DB10086F73F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C0BE1E4F2C196DB20086F73F /* CosmicInsightsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CosmicInsightsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,6 +61,10 @@
 		C0BE1E6E2C197E980086F73F /* CosmicInsights.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CosmicInsights.entitlements; sourceTree = "<group>"; };
 		C0BE1E6F2C198B460086F73F /* HealthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthModel.swift; sourceTree = "<group>"; };
 		C0BE1E712C19B74D0086F73F /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		C0EC08202C1C196F00C4D05A /* FilteredHealthListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredHealthListView.swift; sourceTree = "<group>"; };
+		C0EC08222C1C2FD500C4D05A /* AppleSignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSignInView.swift; sourceTree = "<group>"; };
+		C0EC08242C1C323600C4D05A /* CosmicInsightsRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CosmicInsightsRelease.entitlements; sourceTree = "<group>"; };
+		C0EC08252C1C3BA200C4D05A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +115,8 @@
 		C0BE1E412C196DAA0086F73F /* CosmicInsights */ = {
 			isa = PBXGroup;
 			children = (
+				C0EC08252C1C3BA200C4D05A /* Info.plist */,
+				C0EC08242C1C323600C4D05A /* CosmicInsightsRelease.entitlements */,
 				C0EC081A2C1BF99D00C4D05A /* Utils */,
 				C0EC081B2C1BF9B100C4D05A /* Model */,
 				C0EC081D2C1BF9BF00C4D05A /* View */,
@@ -175,11 +183,29 @@
 			isa = PBXGroup;
 			children = (
 				C091C6F12C1A173F00007066 /* HealthTabView.swift */,
-				C0BE1E442C196DAA0086F73F /* ContentView.swift */,
-				C0BE1E712C19B74D0086F73F /* DetailView.swift */,
-				C091C6F32C1A190500007066 /* BrowseView.swift */,
+				C0EC081F2C1C18B500C4D05A /* Browse */,
+				C0EC081E2C1C18AC00C4D05A /* Summary */,
+				C0EC08222C1C2FD500C4D05A /* AppleSignInView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		C0EC081E2C1C18AC00C4D05A /* Summary */ = {
+			isa = PBXGroup;
+			children = (
+				C0BE1E442C196DAA0086F73F /* SummaryView.swift */,
+				C0BE1E712C19B74D0086F73F /* DetailView.swift */,
+			);
+			path = Summary;
+			sourceTree = "<group>";
+		};
+		C0EC081F2C1C18B500C4D05A /* Browse */ = {
+			isa = PBXGroup;
+			children = (
+				C091C6F32C1A190500007066 /* BrowseView.swift */,
+				C0EC08202C1C196F00C4D05A /* FilteredHealthListView.swift */,
+			);
+			path = Browse;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,15 +338,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0BE1E452C196DAA0086F73F /* ContentView.swift in Sources */,
+				C0BE1E452C196DAA0086F73F /* SummaryView.swift in Sources */,
 				C0BE1E6D2C197E720086F73F /* HealthStoreManager.swift in Sources */,
 				C091C6F42C1A190500007066 /* BrowseView.swift in Sources */,
 				C0BE1E432C196DAA0086F73F /* CosmicInsightsApp.swift in Sources */,
+				C0EC08232C1C2FD500C4D05A /* AppleSignInView.swift in Sources */,
 				C0BE1E722C19B74D0086F73F /* DetailView.swift in Sources */,
 				C08609142C1AD99D000CF08C /* Ext+Enum.swift in Sources */,
 				C091C6F22C1A173F00007066 /* HealthTabView.swift in Sources */,
 				C0BE1E702C198B460086F73F /* HealthModel.swift in Sources */,
 				C08609122C1AD933000CF08C /* Helper.swift in Sources */,
+				C0EC08212C1C196F00C4D05A /* FilteredHealthListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,6 +517,8 @@
 				DEVELOPMENT_TEAM = UGG4H4P58K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CosmicInsights/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "This application wants to access health details";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -514,7 +544,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = CosmicInsights/CosmicInsights.entitlements;
+				CODE_SIGN_ENTITLEMENTS = CosmicInsights/CosmicInsightsRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -522,6 +552,8 @@
 				DEVELOPMENT_TEAM = UGG4H4P58K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CosmicInsights/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "This application wants to access health details";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

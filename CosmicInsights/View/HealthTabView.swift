@@ -14,17 +14,17 @@ struct HealthTabView: View {
     var body: some View {
         
         TabView(selection: $selectedTab) {
-            ContentView().tabItem {
+            SummaryView().tabItem {
                 Text("Summary")
                                Image(systemName: "suit.heart.fill")
                                    .renderingMode(.template)
-            }.tag("Summary").environmentObject(healthManager)
+            }.tag("Summary").toolbar(healthManager.showTabbar ? .visible : .hidden, for: .tabBar).environmentObject(healthManager)
             
             BrowseView().tabItem {
                 Text("Browse")
                                Image(systemName: "square.grid.3x3.fill")
                                    .renderingMode(.template)
-            }.tag("Browse").environmentObject(healthManager)
+            }.tag("Browse").toolbar(healthManager.showTabbar ? .visible : .hidden, for: .tabBar).environmentObject(healthManager)
         }
     }
 }

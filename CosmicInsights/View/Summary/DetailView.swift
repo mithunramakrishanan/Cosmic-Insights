@@ -14,7 +14,6 @@ struct DetailView: View {
     @EnvironmentObject var healthManager : HealthStoreManager
     @State private var displayType: DisplayType = .list
     var healthData : HealthDetailData
-
     private var weekSortHealthDatas: [HealthDetailData] {
         healthManager.weekDatas.sorted { lhs, rhs in
             lhs.date > rhs.date
@@ -48,9 +47,11 @@ struct DetailView: View {
         .task {
             
             healthManager.getWeekHealthDatas(type: healthData.healthType)
+            healthManager.showTabbar(show: false)
+        }.onAppear {
         }
         .padding()
-        .navigationTitle("Details")
+        .navigationTitle("Your Last 7 Days").navigationBarTitleDisplayMode(.inline)
     }
 }
 
@@ -108,10 +109,10 @@ struct HealthDetailChartView: View {
     var body: some View {
         
         Chart {
-            ForEach(weekHealthDatas, id: \.id) { health in
+            ForEach(weekHealthDatas.sorted{$0.date < $1.date}, id: \.id) { health in
                 
                 BarMark(
-                          x: .value("Date", health.date),
+                    x: .value("Date", health.date.dayOfWeek() ?? ""),
                           y: .value("Amount", health.amount.digitFromString())
                 ).foregroundStyle(health.color.gradient)
             }
@@ -126,10 +127,10 @@ struct HealthDetailGraphView: View {
     var body: some View {
         
         Chart {
-            ForEach(weekHealthDatas, id: \.id) { health in
+            ForEach(weekHealthDatas.sorted{$0.date < $1.date}, id: \.id) { health in
                 
                 LineMark(
-                          x: .value("Date", health.date),
+                          x: .value("Date", health.date.dayOfWeek() ?? ""),
                           y: .value("Amount", health.amount.digitFromString())
                 ).foregroundStyle(health.color.gradient)
             }

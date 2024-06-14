@@ -20,3 +20,11 @@ struct HealthDetailData {
     var date : Date
     var healthType : HKQuantityType
 }
+
+struct HealthCategoriesData {
+    let id = UUID()
+    var title : String
+    var image : String
+    var type : HeathHeaderTypes
+    var color : Color
+}

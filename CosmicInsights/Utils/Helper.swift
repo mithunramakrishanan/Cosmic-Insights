@@ -24,6 +24,7 @@ final class Helper {
         let walkingRunning = HKQuantityType(.distanceWalkingRunning)
         let exercise = HKQuantityType(.appleExerciseTime)
         let swimming = HKQuantityType(.distanceSwimming)
+        let swimmingStrokes = HKQuantityType(.swimmingStrokeCount)
         
         //Body Measurements
         let bodyTemp = HKQuantityType(.bodyTemperature)
@@ -33,7 +34,7 @@ final class Helper {
         let doubleSupportTime = HKQuantityType(.walkingDoubleSupportPercentage)
         let groundContactTime = HKQuantityType(.runningGroundContactTime)
         let verticalOscillation = HKQuantityType(.runningVerticalOscillation)
-        let runningSpeed = HKQuantityType(.runningSpeed)
+        let runningSpeed = HKQuantityType(.runningStrideLength)
         let walkingSpeed = HKQuantityType(.walkingSpeed)
         
         //Nutrition
@@ -51,7 +52,7 @@ final class Helper {
         let forcedVitalCapacity = HKQuantityType(.forcedVitalCapacity)
         let respiratoryRate = HKQuantityType(.respiratoryRate)
         
-        return [heartRate,restingEnergy,activity,activeEnergy,steps,walkingRunning,exercise,swimming,
+        return [heartRate,restingEnergy,activity,activeEnergy,steps,walkingRunning,exercise,swimming,swimmingStrokes,
                 bodyTemp,bodyFat,
                 doubleSupportTime,groundContactTime,verticalOscillation,runningSpeed,walkingSpeed,
                 dietaryBiotin,dietaryCalcium,dietaryCarbohydrates,dietaryFiber,dietaryIron,dietaryMagnesium,dietaryWater,dietaryZinc,

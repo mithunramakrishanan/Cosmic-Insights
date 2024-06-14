@@ -12,7 +12,10 @@ import HealthKit
 class HealthStoreManager : ObservableObject {
     
     let healthStore = HKHealthStore()
+    @Published var showTabbar : Bool = true
+    @Published var loginSuccess : Bool = false
     @Published var todayHealthValues : [HealthDetailData] = []
+    @Published var filteredHealthValues : [HealthDetailData] = []
     @Published var weekDatas : [HealthDetailData] = []
     let dispatchGroupDay = DispatchGroup()
     let dispatchGroupWeek = DispatchGroup()
@@ -42,6 +45,7 @@ class HealthStoreManager : ObservableObject {
             let query =  HKSampleQuery(sampleType: types, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: []) { _, result, error in
                 guard let result = result,
                       let data = result.first as? HKQuantitySample else {
+                    print(error?.localizedDescription)
                     var health = types.getHeaderDetails()
                     health.amount = "No data"
                     aHealthDataArray.append(health)
@@ -64,6 +68,10 @@ class HealthStoreManager : ObservableObject {
             aHealthDataArray = aHealthDataArray.sorted { $0.title < $1.title }
             self.todayHealthValues = aHealthDataArray
         }
+    }
+    
+    func getFilteredData(type : HeathHeaderTypes) {
+        filteredHealthValues = self.todayHealthValues.filter { $0.type == type}
     }
     
     //One week datas
@@ -99,6 +107,43 @@ class HealthStoreManager : ObservableObject {
             print(aHealthDataArray)
             self.weekDatas = aHealthDataArray
         }
+    }
+    
+    func getCategoriesDetails()->[HealthCategoriesData] {
+        
+        var aCategoryArray : [HealthCategoriesData] = []
+        for category in HeathHeaderTypes.allCases {
+            var healthCategory = HealthCategoriesData(title: category.rawValue, image: "", type: category, color: .clear)
+           
+            if category.rawValue == "Activity" {
+                healthCategory.image = "category_Activity"
+                healthCategory.color = .activityColor
+            }
+            else if category.rawValue == "Body Measurements" {
+                healthCategory.image = "category_body"
+                healthCategory.color = .bodyMeasureColor
+            }
+            else if category.rawValue == "Mobility" {
+                healthCategory.image = "runningSpeed"
+                healthCategory.color = .mobilityColor
+            }
+            else if category.rawValue == "Nutrition" {
+                healthCategory.image = "category_Nutrition"
+                healthCategory.color = .nutritionColor
+            }
+            else {
+                healthCategory.image = "respiratoryRate"
+                healthCategory.color = .respiratoryColor
+            }
+
+            aCategoryArray.append(healthCategory)
+            
+        }
+        return aCategoryArray
+    }
+    
+    func showTabbar(show : Bool) {
+        showTabbar = show
     }
 }
 

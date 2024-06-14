@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct SummaryView: View {
     
     @EnvironmentObject var healthManager : HealthStoreManager
     
@@ -29,15 +29,17 @@ struct ContentView: View {
                         }).padding()
                     }
                 }
+            }.onAppear {
+                healthManager.showTabbar(show: true)
             }
-            .navigationTitle("Welcome")
+            .navigationTitle("All Health Data")
         }
     }
 }
 
 #Preview {
     
-    ContentView()
+    SummaryView()
 }
 
 struct HealthCardView: View {
