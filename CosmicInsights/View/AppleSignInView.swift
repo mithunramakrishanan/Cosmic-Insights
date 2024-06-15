@@ -29,9 +29,13 @@ struct AppleSignInView: View {
             HStack {
                 VStack(alignment:.leading, spacing: 35) {
                     ForEach(categories, id:\.id) { category in
-                        HStack(alignment : .top) {
-                            Image(category.image).resizable().renderingMode(.template).foregroundColor(category.color).frame(width: 40,height: 40)
-                            Text("   \(category.title)").font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/).foregroundColor(.white)
+                        
+                        if category.animate {
+                            
+                            HStack(alignment : .top) {
+                                Image(category.image).resizable().renderingMode(.template).foregroundColor(category.color).frame(width: 40,height: 40)
+                                Text("   \(category.title)").font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/).foregroundColor(.white)
+                            }
                         }
                     }
                 }.padding()
@@ -54,13 +58,15 @@ struct AppleSignInView: View {
             
         }.onAppear {
             
-            var index = 0
-            for category in healthManager.getCategoriesDetails() {
-                index += 1
-                DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) * 0.6) {
-                    withAnimation(.spring(.smooth(duration: 0.3))){
-                        categories.append(category)
-                        if categories.count == 5 {
+            categories = healthManager.getCategoriesDetails()
+            
+            // Animation for data loading
+            for(index,_) in categories.enumerated() {
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) * 0.05) {
+                    withAnimation(.interactiveSpring(response: 0.8,dampingFraction: 0.8,blendDuration: 0.8)) {
+                        categories[index].animate = true
+                        if index == 4 {
                             showLoginButton = true
                         }
                     }

@@ -20,15 +20,31 @@ extension String {
         }
         return 0
     }
+    
+    var letters: String {
+        return self.components(separatedBy: CharacterSet.decimalDigits).joined()
+    }
 }
 
 extension Date {
     
     func dayOfWeek() -> String? {
-           let dateFormatter = DateFormatter()
-           dateFormatter.dateFormat = "EEEE"
-           return dateFormatter.string(from: self).capitalized
-       }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        return dateFormatter.string(from: self).capitalized
+    }
+    
+    func dayOfMonth() -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM"
+        return dateFormatter.string(from: self).capitalized
+    }
+    
+    func getDateFormat(format : String)->String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        return dateFormatter.string(from: self)
+    }
 }
 
 //Making extension for health type to arrange data
@@ -36,23 +52,10 @@ extension HKQuantityType {
     
     func getHeaderDetails()-> HealthDetailData {
         
-        // category - ACTIVITY
-        if self == HKQuantityType(.heartRate) {
-            
-            return HealthDetailData(title: "Heart Rate", subtitle: "A normal resting heart rate for adults ranges from 60 to 100 beats per minute", amount: "", image: "heartRate", type: .ACTIVITY, color: Color.activityColor, date: Date(), healthType: HKQuantityType(.heartRate))
-        }
-        else if self == HKQuantityType(.appleMoveTime) {
-            
-            return HealthDetailData(title: "Apple Move Time", subtitle: "Remember to move for approximately three minutes every 30 – 60 minutes", amount: "", image: "appleMoveTime", type: .ACTIVITY , color: Color.activityColor, date: Date(), healthType: HKQuantityType(.appleMoveTime))
-        }
-        else if self == HKQuantityType(.activeEnergyBurned) {
+        //ACTIVITY
+        if self == HKQuantityType(.activeEnergyBurned) {
             
             return HealthDetailData(title: "Active Energy Burned", subtitle: "Individuals should strive to burn at least 2,000 calories per week if the ultimate goal is to promote and sustain weight loss", amount: "", image: "activeEnergyBurned", type: .ACTIVITY, color: Color.activityColor, date: Date(), healthType: HKQuantityType(.activeEnergyBurned))
-            
-        }
-        else if self == HKQuantityType(.basalEnergyBurned) {
-            
-            return HealthDetailData(title: "Basal Energy Burned", subtitle: "Men's BMR tends to be around 1600 - 1800. This means men burn 1600 – 1800 kcal during the day at complete rest", amount: "", image: "activeEnergyBurned", type: .ACTIVITY, color: Color.activityColor, date: Date(), healthType: HKQuantityType(.basalEnergyBurned))
             
         }
         else if self == HKQuantityType(.stepCount)  {
@@ -75,25 +78,20 @@ extension HKQuantityType {
             return HealthDetailData(title: "Distance Swimming", subtitle: "A good target for intermediate swimmers is to swim 1 to 2 kilometers (0.6 to 1.2 miles) per session, three to four times per week", amount: "", image: "distanceSwimming", type: .ACTIVITY, color: Color.activityColor, date: Date(), healthType: HKQuantityType(.distanceSwimming))
             
         }
-        else if self == HKQuantityType(.swimmingStrokeCount)  {
-            
-            return HealthDetailData(title: "Swimming Stroke Count", subtitle: "Swimmers generally require somewhere between 16-30 strokes to complete 1 length of a 25m pool", amount: "", image: "distanceSwimming", type: .ACTIVITY, color: Color.activityColor, date: Date(), healthType: HKQuantityType(.distanceSwimming))
-            
-        }
         
-        // category - BLOOD MEASURE
+        // BLOOD MEASUREMENTS
         else if self == HKQuantityType(.bodyTemperature)  {
             
-            return HealthDetailData(title: "Body Temperature", subtitle: "Normal body temperature varies by person, age, activity, and time of day. The average normal body temperature is generally accepted as 98.6°F (37°C)", amount: "", image: "bodyTemperature", type: .BODYMEASURE, color: Color.activityColor, date: Date(), healthType: HKQuantityType(.bodyTemperature))
+            return HealthDetailData(title: "Body Temperature", subtitle: "Normal body temperature varies by person, age, activity, and time of day. The average normal body temperature is generally accepted as 98.6°F (37°C)", amount: "", image: "bodyTemperature", type: .BODYMEASURE, color: Color.bodyMeasureColor, date: Date(), healthType: HKQuantityType(.bodyTemperature))
             
         }
         else if self == HKQuantityType(.bodyFatPercentage)  {
             
-            return HealthDetailData(title: "Body Fat Percentage", subtitle: "Best body fat percentages averaged between 12% and 20% for men and 20% and 30% for women", amount: "", image: "bodyFatPercentage", type: .BODYMEASURE, color: Color.activityColor, date: Date(), healthType: HKQuantityType(.bodyFatPercentage))
+            return HealthDetailData(title: "Body Fat Percentage", subtitle: "Best body fat percentages averaged between 12% and 20% for men and 20% and 30% for women", amount: "", image: "bodyFatPercentage", type: .BODYMEASURE, color: Color.bodyMeasureColor, date: Date(), healthType: HKQuantityType(.bodyFatPercentage))
             
         }
         
-        // category - MOBILITY
+        //MOBILITY
         else if self == HKQuantityType(.walkingDoubleSupportPercentage)  {
             
             return HealthDetailData(title: "Walking Double Support Percentage", subtitle: "An average and healthy walk is typically between 28 and 40%", amount: "", image: "walkingDoubleSupportPercentage", type: .MOBILITY, color: Color.mobilityColor, date: Date(), healthType: HKQuantityType(.walkingDoubleSupportPercentage))
@@ -119,20 +117,10 @@ extension HKQuantityType {
             
         }
         
-        // category - NUTRITION
-        else if self == HKQuantityType(.dietaryBiotin)  {
-            
-            return HealthDetailData(title: "Biotin", subtitle: "The amount taken by mouth is based on normal daily recommended intakes: Adults and teenagers—30 to 100 micrograms (mcg) per day", amount: "", image: "dietaryBiotin", type: .NUTRITION, color: Color.nutritionColor, date: Date(), healthType: HKQuantityType(.dietaryBiotin))
-            
-        }
+        //NUTRITION
         else if self == HKQuantityType(.dietaryCalcium)  {
             
             return HealthDetailData(title: "Calcium", subtitle: "Normal blood calcium results in adults are: Total blood calcium: 8.5 to 10.5 milligrams per deciliter (mg/dL)", amount: "", image: "dietaryCalcium", type: .NUTRITION, color: Color.nutritionColor, date: Date(), healthType: HKQuantityType(.dietaryCalcium))
-            
-        }
-        else if self == HKQuantityType(.dietaryCarbohydrates)  {
-            
-            return HealthDetailData(title: "Carbohydrates", subtitle: "The expected values for normal fasting blood glucose concentration are between 70 mg/dL (3.9 mmol/L) and 100 mg/dL (5.6 mmol/L)", amount: "", image: "dietaryCarbohydrates", type: .NUTRITION, color: Color.nutritionColor, date: Date(), healthType: HKQuantityType(.dietaryCarbohydrates))
             
         }
         else if self == HKQuantityType(.dietaryFiber)  {
@@ -145,11 +133,6 @@ extension HKQuantityType {
             return HealthDetailData(title: "Iron", subtitle: "Normal value range is: Iron: 60 to 170 micrograms per deciliter (mcg/dL)", amount: "", image: "dietaryIron", type: .NUTRITION, color: Color.nutritionColor, date: Date(), healthType: HKQuantityType(.dietaryIron))
             
         }
-        else if self == HKQuantityType(.dietaryMagnesium)  {
-            
-            return HealthDetailData(title: "Magnesium", subtitle: "The normal range for blood magnesium level is 1.7 to 2.2 mg/dL (0.85 to 1.10 mmol/L)", amount: "", image: "dietaryMagnesium", type: .NUTRITION, color: Color.nutritionColor, date: Date(), healthType: HKQuantityType(.dietaryMagnesium))
-            
-        }
         else if self == HKQuantityType(.dietaryWater)  {
             
             return HealthDetailData(title: "Water", subtitle: "You're usually in a healthy range if your body water percentage is more than 50 percent", amount: "", image: "dietaryWater", type: .NUTRITION, color: Color.nutritionColor, date: Date(), healthType: HKQuantityType(.dietaryWater))
@@ -160,8 +143,7 @@ extension HKQuantityType {
             return HealthDetailData(title: "Zinc", subtitle: "In healthy people, the amount of zinc in serum or plasma is 80 to 120 mcg/dL (12 to 18 mcmol/L)", amount: "", image: "dietaryZinc", type: .NUTRITION, color: Color.nutritionColor, date: Date(), healthType: HKQuantityType(.dietaryZinc))
             
         }
-        
-        // category - RESPIRATORY
+        //RESPIRATORY
         else if self == HKQuantityType(.oxygenSaturation)  {
             
             return HealthDetailData(title: "Oxygen Saturation", subtitle: "A normal level of oxygen is usually 95% or higher", amount: "", image: "oxygenSaturation", type: .RESPIRATORY, color: Color.respiratoryColor, date: Date(), healthType: HKQuantityType(.oxygenSaturation))
@@ -177,18 +159,29 @@ extension HKQuantityType {
             return HealthDetailData(title: "Respiratory Rate", subtitle: "Normal respiration rates for an adult person at rest range from 12 to 16 breaths per minute.", amount: "", image: "respiratoryRate", type: .RESPIRATORY, color: Color.respiratoryColor, date: Date(), healthType: HKQuantityType(.respiratoryRate))
             
         }
+        //HEART
+        else if self == HKQuantityType(.heartRate) {
+            
+            return HealthDetailData(title: "Heart Rate", subtitle: "A normal resting heart rate for adults ranges from 60 to 100 beats per minute", amount: "", image: "heartRate", type: .HEART, color: Color.activityColor, date: Date(), healthType: HKQuantityType(.heartRate))
+        }
+        else if self == HKQuantityType(.bloodPressureSystolic) {
+            
+            return HealthDetailData(title: "Blood Pressure Systolic", subtitle: "Typical blood pressure as below 120 mm Hg systolic", amount: "", image: "bloodPressureSystolic", type: .HEART, color: Color.activityColor, date: Date(), healthType: HKQuantityType(.heartRate))
+        }
         else {
             
             return HealthDetailData(title: "", subtitle: "", amount: "", image: "", type: .ACTIVITY, color: Color.respiratoryColor, date: Date(), healthType: HKQuantityType(.heartRate))
         }
+        
     }
 }
 
 extension Color {
     static let activityColor = Color.red
-    static let bodyMeasureColor = Color.red
+    static let bodyMeasureColor = Color(red: 127, green: 0, blue: 255)
     static let mobilityColor = Color.orange
     static let nutritionColor = Color.green
+    static let heartColor = Color.red
     static let respiratoryColor = Color.blue
 }
 
@@ -197,6 +190,7 @@ enum HeathHeaderTypes:String,CaseIterable {
     case BODYMEASURE = "Body Measurements"
     case MOBILITY = "Mobility"
     case NUTRITION = "Nutrition"
+    case HEART = "Heart"
     case RESPIRATORY = "Respiratory"
 }
 
@@ -204,6 +198,7 @@ enum DisplayType: Int, Identifiable, CaseIterable {
     case list
     case chart
     case graph
+    case pie
     
     var id: Int {
         rawValue
@@ -217,12 +212,30 @@ extension DisplayType {
                 return "list.bullet"
             case .chart:
                 return "chart.bar"
-        case .graph:
+            case .graph:
             return "chart.line.uptrend.xyaxis"
+            case .pie:
+            return "chart.pie.fill"
         }
     }
 }
 
-func isUnder8000(_ count: Int) -> Bool {
-    count < 8000
+//Card modifier
+struct HealthCardModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .cornerRadius(20)
+            .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0, y: 0)
+    }
+    
+}
+
+func checkSameDate(date : String)-> Bool {
+    let currentDate = Date().getDateFormat(format: "dd-MM-YY")
+    if date == currentDate{
+        return true
+    }
+    else {
+        return false
+    }
 }

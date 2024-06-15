@@ -18,7 +18,11 @@ struct HealthDetailData {
     var type : HeathHeaderTypes
     var color : Color
     var date : Date
+    var dateString : String = ""
+    var timeString : String = ""
     var healthType : HKQuantityType
+    var animate : Bool = false
+    var chartDigit : Int = 0
 }
 
 struct HealthCategoriesData {
@@ -27,4 +31,5 @@ struct HealthCategoriesData {
     var image : String
     var type : HeathHeaderTypes
     var color : Color
+    var animate : Bool = false
 }

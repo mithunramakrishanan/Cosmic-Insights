@@ -11,6 +11,8 @@ struct FilteredHealthListView: View {
    
     @EnvironmentObject var healthManager : HealthStoreManager
     var filterType : HealthCategoriesData
+    @State var filteredHealthValues : [HealthDetailData] = []
+    
     var body: some View {
         
         ZStack {
@@ -18,17 +20,31 @@ struct FilteredHealthListView: View {
             VStack {
                 ScrollView {
                     LazyVGrid(columns: Array(repeating: GridItem(spacing: 20), count: 1), content: {
-                        ForEach(healthManager.filteredHealthValues.sorted{$0.title < $1.title} , id:\.id) { item in
+                        ForEach(filteredHealthValues.sorted{$0.title < $1.title} , id:\.id) { item in
                             
-                            NavigationLink(destination: DetailView(healthData: item)) {
-                                HealthCardView(healthData: item)
+                            if item.animate {
+                                NavigationLink(destination: DetailView(healthData: item)) {
+                                    HealthCardView(healthData: item)
+                                }
                             }
                         }
                     }).padding()
                 }
             }
         }.onAppear {
-            healthManager.getFilteredData(type: filterType.type)
+            
+            filteredHealthValues = healthManager.getFilteredData(type: filterType.type)
+        
+            // Animation for data loading
+            for(index,_) in filteredHealthValues.enumerated() {
+                DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) * 0.05) {
+                    withAnimation(.interactiveSpring(response: 0.8,dampingFraction: 0.8,blendDuration: 0.8)) {
+                        filteredHealthValues[index].animate = true
+                    }
+                }
+            }
+            
+            
             healthManager.showTabbar(show: false)
         }
         .navigationTitle(filterType.title)

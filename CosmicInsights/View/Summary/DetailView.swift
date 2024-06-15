@@ -13,6 +13,7 @@ struct DetailView: View {
     
     @EnvironmentObject var healthManager : HealthStoreManager
     @State private var displayType: DisplayType = .list
+    @State private var daysTab: String = "7 Days"
     var healthData : HealthDetailData
     private var weekSortHealthDatas: [HealthDetailData] {
         healthManager.weekDatas.sorted { lhs, rhs in
@@ -24,8 +25,21 @@ struct DetailView: View {
         
         VStack {
             
-            if let health = weekSortHealthDatas.first {
-                TodayDetailHeaderView(weekHealthData: health, healthData: healthData)
+            TodayDetailHeaderView(count: "\(weekSortHealthDatas.map{$0.amount.digitFromString()}.reduce(0, { $0 + $1 })) \( weekSortHealthDatas.last?.amount.letters ?? "")", healthData: healthData, selectedDay: daysTab)
+    
+            HStack {
+                Text("Views")
+                Picker("", selection: $daysTab) {
+                    
+                    Text("2 Days").tag("2 Days")
+                    Text("Week").tag("Week")
+                    Text("Month").tag("Month")
+                }
+                .pickerStyle(.segmented).padding(.leading,80)
+            }.onChange(of: daysTab) { oldState, newState in
+                print(newState)
+                    displayType = .list
+                    healthManager.getWeekHealthDatas(type: healthData.healthType, dateRange: newState)
             }
             
             Picker("Selection", selection: $displayType) {
@@ -37,49 +51,60 @@ struct DetailView: View {
             
             switch displayType {
             case .list:
-                HealthDetailListView(weekHealthDatas: Array(weekSortHealthDatas.dropFirst()))
+                HealthDetailListView(weekHealthDatas: Array(weekSortHealthDatas))
             case .chart:
-                HealthDetailChartView(weekHealthDatas: weekSortHealthDatas)
+                HealthDetailChartView(weekHealthDatas: weekSortHealthDatas, daysTab: daysTab)
             case .graph:
-                HealthDetailGraphView(weekHealthDatas: weekSortHealthDatas)
+                HealthDetailGraphView(weekHealthDatas: weekSortHealthDatas, daysTab: daysTab)
+            case .pie:
+                HealthDetailPieChartView(weekHealthDatas: weekSortHealthDatas, daysTab: daysTab)
             }
         }
         .task {
             
-            healthManager.getWeekHealthDatas(type: healthData.healthType)
+            daysTab = "2 Days"
+            healthManager.getWeekHealthDatas(type: healthData.healthType, dateRange: "2 Days")
             healthManager.showTabbar(show: false)
         }.onAppear {
         }
         .padding()
-        .navigationTitle("Your Last 7 Days").navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("Analytics").navigationBarTitleDisplayMode(.inline)
     }
 }
 
 
 struct TodayDetailHeaderView: View {
     
-    let weekHealthData : HealthDetailData
+    let count : String
     var healthData : HealthDetailData
-    
+    var selectedDay : String
     var body: some View {
         VStack {
-            Text("\(weekHealthData.amount)")
-                .font(.largeTitle)
+            Text("\(count)")
+                .font(.system(size: 35,weight: .bold)).foregroundStyle(.white).padding(.top,20)
+            
+            if selectedDay == "2 Days" {
+                Text("in two days")
+                    .font(.system(size: 18,weight: .regular)).foregroundStyle(.white)
+            }
+            else if selectedDay == "Week" {
+                Text("in 7 days")
+                    .font(.system(size: 18,weight: .regular)).foregroundStyle(.white)
+            }
+            else {
+                Text("in 2 months")
+                    .font(.system(size: 18,weight: .regular)).foregroundStyle(.white)
+            }
+
         }.frame(maxWidth: .infinity, maxHeight: 150)
             .background(healthData.color)
         .clipShape(RoundedRectangle(cornerRadius: 16.0, style: .continuous))
         .overlay(alignment: .topLeading) {
             HStack {
-                Image(healthData.image).resizable().frame(width: 20,height: 20)
-                    .foregroundStyle(.red)
-                Text(healthData.title)
+                Image(healthData.image).resizable().renderingMode(.template).foregroundStyle(.white).frame(width: 20,height: 20)
+                Text(healthData.title).font(.system(size: 16,weight: .semibold)).foregroundStyle(.white)
             }.padding()
-        }
-        .overlay(alignment: .bottomTrailing) {
-            Text(weekHealthData.date.formatted(date: .abbreviated, time: .omitted))
-                .font(.caption)
-                .padding()
-        }
+        }.modifier(HealthCardModifier())
     }
 }
 
@@ -92,11 +117,11 @@ struct HealthDetailListView: View {
             HStack {
                 Circle()
                     .frame(width: 10, height: 10)
-                    .foregroundStyle(isUnder8000(Int(health.amount) ?? 0) ? .red: .green)
+                    .foregroundStyle(health.color)
                     
-                Text("\(health.amount)")
+                Text("\(health.amount)").font(.system(size: 16,weight: .semibold)).foregroundStyle(.black)
                 Spacer()
-                Text(health.date.formatted(date: .abbreviated, time: .omitted))
+                Text(checkSameDate(date:health.dateString) ? "\("Today at") \(health.timeString)" : "\(health.dateString) \(health.timeString)").font(.system(size: 15,weight: .regular)).foregroundStyle(.gray)
             }
         }.listStyle(.plain)
     }
@@ -104,17 +129,28 @@ struct HealthDetailListView: View {
 
 struct HealthDetailChartView: View {
     
-    let weekHealthDatas : [HealthDetailData]
-    
+    @State var weekHealthDatas : [HealthDetailData]
+    var daysTab : String
     var body: some View {
         
-        Chart {
-            ForEach(weekHealthDatas.sorted{$0.date < $1.date}, id: \.id) { health in
-                
+        Chart(weekHealthDatas.sorted{$0.date < $1.date}, id: \.id) { health in
                 BarMark(
-                    x: .value("Date", health.date.dayOfWeek() ?? ""),
-                          y: .value("Amount", health.amount.digitFromString())
-                ).foregroundStyle(health.color.gradient)
+                    x: .value("Date", daysTab == "Month" ? health.date.dayOfMonth() ?? "" : health.date.dayOfWeek() ?? ""),
+                    y: .value("Amount",health.animate ? health.amount.digitFromString() : 0)
+                ).foregroundStyle(health.color).annotation(position: .overlay, alignment: .top) {
+                    
+//                    Text("\(health.amount.digitFromString())")
+                }
+            
+        }.chartYScale(domain: 0...(((weekHealthDatas.map{$0.chartDigit}.max() ?? 0) + 200) )).onAppear {
+            
+            // Chart update animation
+            for (index,_) in weekHealthDatas.enumerated() {
+                DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) * 0.05) {
+                    withAnimation(.interactiveSpring(response: 0.8,dampingFraction: 0.8,blendDuration: 0.8)) {
+                        weekHealthDatas[index].animate = true
+                    }
+                }
             }
         }
     }
@@ -122,18 +158,50 @@ struct HealthDetailChartView: View {
 
 struct HealthDetailGraphView: View {
     
-    let weekHealthDatas : [HealthDetailData]
-    
+    @State var weekHealthDatas : [HealthDetailData]
+    var daysTab : String
     var body: some View {
         
         Chart {
             ForEach(weekHealthDatas.sorted{$0.date < $1.date}, id: \.id) { health in
-                
                 LineMark(
-                          x: .value("Date", health.date.dayOfWeek() ?? ""),
-                          y: .value("Amount", health.amount.digitFromString())
-                ).foregroundStyle(health.color.gradient)
+                    x: .value("Date", daysTab == "Month" ? health.date.dayOfMonth() ?? "" : health.date.dayOfWeek() ?? ""),
+                    y: .value("Amount",health.amount.digitFromString())
+                ).foregroundStyle(health.color)
             }
+        }.chartYScale(domain: 0...(weekHealthDatas.map{$0.chartDigit}.max() ?? 1000)).onAppear {
+            
         }
     }
 }
+
+struct HealthDetailPieChartView: View {
+    
+    @State var weekHealthDatas : [HealthDetailData]
+    var daysTab : String
+    
+    var body: some View {
+        Chart(weekHealthDatas.sorted{$0.date < $1.date}, id: \.id) { health in
+          SectorMark(
+            angle: .value("Amount",health.animate ? health.amount.digitFromString() : 0),
+            innerRadius: .ratio(0.6),
+            angularInset: 2
+          ).cornerRadius(5)
+          .foregroundStyle(by: .value("Date", daysTab == "Month" ? health.date.dayOfMonth() ?? "" : health.date.dayOfWeek() ?? ""))
+        }
+        .scaledToFit().onAppear {
+            
+            // Chart update animation
+            for (index,_) in weekHealthDatas.enumerated() {
+                DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) * 0.05) {
+                    withAnimation(.interactiveSpring(response: 0.8,dampingFraction: 0.8,blendDuration: 0.8)) {
+                        weekHealthDatas[index].animate = true
+                    }
+                }
+            }
+        }
+      }
+
+}
+
+

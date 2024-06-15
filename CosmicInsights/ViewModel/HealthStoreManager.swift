@@ -15,7 +15,6 @@ class HealthStoreManager : ObservableObject {
     @Published var showTabbar : Bool = true
     @Published var loginSuccess : Bool = false
     @Published var todayHealthValues : [HealthDetailData] = []
-    @Published var filteredHealthValues : [HealthDetailData] = []
     @Published var weekDatas : [HealthDetailData] = []
     let dispatchGroupDay = DispatchGroup()
     let dispatchGroupWeek = DispatchGroup()
@@ -27,6 +26,10 @@ class HealthStoreManager : ObservableObject {
         healthStore.requestAuthorization(toShare: [], read: healthTypes) { isSuccess, error in
             if isSuccess {
                 self.todayHealthDetails()
+            }
+            else {
+                
+                //Only reading data, HealthKit does not provide any information about whether or not the user has granted permissions to access the required data. Apple has clearly mentioned this in their documentation
             }
         }
     }
@@ -45,9 +48,8 @@ class HealthStoreManager : ObservableObject {
             let query =  HKSampleQuery(sampleType: types, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: []) { _, result, error in
                 guard let result = result,
                       let data = result.first as? HKQuantitySample else {
-                    print(error?.localizedDescription)
                     var health = types.getHeaderDetails()
-                    health.amount = "No data"
+                    health.amount = "-----"
                     aHealthDataArray.append(health)
                     self.dispatchGroupDay.leave()
                     return
@@ -56,6 +58,9 @@ class HealthStoreManager : ObservableObject {
                 print(quantity)
                 var health = data.quantityType.getHeaderDetails()
                 health.amount = "\(quantity)"
+                health.chartDigit = health.amount.digitFromString()
+                health.dateString = result[0].startDate.getDateFormat(format: "dd-MM-YY")
+                health.timeString = result[0].startDate.getDateFormat(format: "hh:mm")
                 aHealthDataArray.append(health)
                 self.dispatchGroupDay.leave()
                 
@@ -70,16 +75,31 @@ class HealthStoreManager : ObservableObject {
         }
     }
     
-    func getFilteredData(type : HeathHeaderTypes) {
-        filteredHealthValues = self.todayHealthValues.filter { $0.type == type}
+    func getFilteredData(type : HeathHeaderTypes)-> [HealthDetailData] {
+        return self.todayHealthValues.filter { $0.type == type}
     }
     
     //One week datas
-    func getWeekHealthDatas(type : HKQuantityType) {
+    func getWeekHealthDatas(type : HKQuantityType, dateRange : String) {
         
         var aHealthDataArray : [HealthDetailData] = []
         let today = Date()
-        let startDate = Calendar.current.date(byAdding: .day, value: -7, to: today)
+        
+        var startDate = Date()
+        
+        if dateRange == "2 Days"{
+            
+            startDate = Calendar.current.date(byAdding: .day, value: -1, to: today) ?? Date()
+        }
+        else if dateRange == "Week"{
+            
+            startDate = Calendar.current.date(byAdding: .day, value: -6, to: today) ?? Date()
+        }
+        else if dateRange == "Month"{
+            
+            startDate = Calendar.current.date(byAdding: .month, value: -1, to: today) ?? Date()
+        }
+    
         let predicate = HKQuery.predicateForSamples(withStart: startDate, end: today)
         self.weekDatas.removeAll()
         self.dispatchGroupWeek.enter()
@@ -96,6 +116,23 @@ class HealthStoreManager : ObservableObject {
                 var health = data.quantityType.getHeaderDetails()
                 health.amount = "\(quantity)"
                 health.date = aValue.startDate
+                health.dateString = aValue.startDate.getDateFormat(format: "dd-MM-YY")
+                health.timeString = aValue.startDate.getDateFormat(format: "hh:mm")
+                
+                var calculateHighest = 0
+                //Logic to get highest chat value for the day
+                if dateRange == "Month"{
+                    
+                    calculateHighest = aHealthDataArray.filter{$0.date.dayOfMonth() == health.date.dayOfMonth()}.map {$0.amount.digitFromString()}.reduce(0, { $0 + $1 }) + health.amount.digitFromString()
+                }
+                else {
+                    
+                    calculateHighest = aHealthDataArray.filter{$0.dateString == health.dateString}.map {$0.amount.digitFromString()}.reduce(0, { $0 + $1 }) + health.amount.digitFromString()
+                }
+                print("Date -------->  \(health.dateString) \(calculateHighest)")
+                
+                health.chartDigit = calculateHighest
+                
                 aHealthDataArray.append(health)
                 
             }
@@ -130,6 +167,10 @@ class HealthStoreManager : ObservableObject {
             else if category.rawValue == "Nutrition" {
                 healthCategory.image = "category_Nutrition"
                 healthCategory.color = .nutritionColor
+            }
+            else if category.rawValue == "Heart"  {
+                healthCategory.image = "heartRate"
+                healthCategory.color = .heartColor
             }
             else {
                 healthCategory.image = "respiratoryRate"

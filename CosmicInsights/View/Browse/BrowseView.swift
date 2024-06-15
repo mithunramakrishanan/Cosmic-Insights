@@ -17,15 +17,28 @@ struct BrowseView: View {
             VStack {
                 List(categotyValues, id: \.id) { category in
                     VStack {
-                        NavigationLink(destination: FilteredHealthListView(filterType: category)) {
-                            CategoryRowView(category: category)
+                        
+                        if category.animate {
+                            NavigationLink(destination: FilteredHealthListView(filterType: category)) {
+                                CategoryRowView(category: category)
+                            }
                         }
+
                     }.frame(height: 40)
                 }
             }
-            
             .navigationTitle("Health Categories").onAppear {
                 categotyValues = healthManager.getCategoriesDetails()
+                
+                // Data loading animation
+                for(index,_) in categotyValues.enumerated() {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) * 0.05) {
+                        withAnimation(.interactiveSpring(response: 0.8,dampingFraction: 0.8,blendDuration: 0.8)) {
+                            categotyValues[index].animate = true
+                        }
+                    }
+                }
+                
                 healthManager.showTabbar(show: true)
             }
         }.environmentObject(healthManager)
