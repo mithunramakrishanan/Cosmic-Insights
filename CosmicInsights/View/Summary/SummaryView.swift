@@ -11,6 +11,9 @@ struct SummaryView: View {
     
     @EnvironmentObject var healthManager : HealthStoreManager
     @State var todayHealthValues : [HealthDetailData] = []
+    @State var searchText = ""
+    let userName : String = UserDefaults.standard.string(forKey: "userName") ?? ""
+    
     var body: some View {
         
         NavigationView {
@@ -20,7 +23,7 @@ struct SummaryView: View {
                 VStack {
                     ScrollView {
                         LazyVGrid(columns: Array(repeating: GridItem(spacing: 20), count: 1), content: {
-                            ForEach(todayHealthValues.sorted{$0.title < $1.title} , id:\.id) { item in
+                            ForEach(searchedHealthResult.sorted{$0.title < $1.title} , id:\.id) { item in
                                 
                                 if item.animate {
                                     NavigationLink(destination: DetailView(healthData: item)) {
@@ -43,8 +46,16 @@ struct SummaryView: View {
                         }
                     }
                 }
-            }
-            .navigationTitle("All Health Data")
+            }.navigationTitle("Welcome \(userName)")
+        }.searchable(text: $searchText, prompt : "Search")
+    }
+    
+    var searchedHealthResult :  [HealthDetailData] {
+       if searchText.isEmpty {
+            return todayHealthValues
+        }
+        else {
+            return todayHealthValues.filter {$0.title.contains(searchText)}
         }
     }
 }
@@ -71,14 +82,14 @@ struct HealthCardView: View {
             GroupBox {
                 Text(healthData.amount).font(.system(size: 20,weight: .bold)).foregroundColor(.black)
             }
-            if healthData.amount == "" {
-                Text("").font(.system(size: 12)).foregroundColor(.gray).padding(.bottom).padding(1)
+            if healthData.amount == "-----" {
+                Text("No data for today").font(.system(size: 12, weight: .semibold)).foregroundColor(.gray).padding(.bottom).padding(1).underline()
             }
             else if (checkSameDate(date: healthData.dateString)) {
-                Text("Last updated on : Today at \(healthData.timeString)").font(.system(size: 12)).foregroundColor(.gray).padding(.bottom).padding(1)
+                Text("Last updated on : Today at \(healthData.timeString)").font(.system(size: 12, weight: .semibold)).foregroundColor(.gray).padding(.bottom).padding(1).underline()
             }
             else {
-                Text("Last updated on : \(healthData.dateString), \(healthData.timeString)").font(.system(size: 12)).foregroundColor(.gray).padding(.bottom).padding(1)
+                Text("Last updated on : \(healthData.dateString), \(healthData.timeString)").font(.system(size: 12, weight: .semibold)).foregroundColor(.gray).padding(.bottom).padding(1).underline()
             }
             Text(healthData.subtitle).font(.system(size: 12)).foregroundColor(.gray).padding(.bottom).padding(1)
             

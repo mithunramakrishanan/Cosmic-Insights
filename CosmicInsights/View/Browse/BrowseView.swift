@@ -11,11 +11,12 @@ struct BrowseView: View {
     
     @EnvironmentObject var healthManager : HealthStoreManager
     @State var categotyValues : [HealthCategoriesData] = []
-    
+    @State private var searchText = ""
+
     var body: some View {
         NavigationView {
             VStack {
-                List(categotyValues, id: \.id) { category in
+                List(searchedCategotyValues, id: \.id) { category in
                     VStack {
                         
                         if category.animate {
@@ -41,7 +42,15 @@ struct BrowseView: View {
                 
                 healthManager.showTabbar(show: true)
             }
-        }.environmentObject(healthManager)
+        }.environmentObject(healthManager).searchable(text: $searchText, prompt: "Search Category")
+    }
+    
+    var searchedCategotyValues: [HealthCategoriesData] {
+        if searchText.isEmpty {
+            return categotyValues
+        } else {
+            return categotyValues.filter { $0.title.contains(searchText) }
+        }
     }
 }
 
@@ -57,6 +66,36 @@ struct CategoryRowView: View {
         HStack {
             Image(category.image).resizable().renderingMode(.template).foregroundColor(category.color).frame(width: 30,height: 30).padding(.trailing)
             Text(category.title).font(.system(size: 20,weight: .bold))
+        }
+    }
+}
+
+
+struct ContentView: View {
+    let names = ["Holly", "Josh", "Rhonda", "Ted"]
+    @State private var searchText = ""
+
+    var body: some View {
+        NavigationStack {
+            List {
+                ForEach(searchResults, id: \.self) { name in
+                    NavigationLink {
+                        Text(name)
+                    } label: {
+                        Text(name)
+                    }
+                }
+            }
+            .navigationTitle("Contacts")
+        }
+        .searchable(text: $searchText)
+    }
+
+    var searchResults: [String] {
+        if searchText.isEmpty {
+            return names
+        } else {
+            return names.filter { $0.contains(searchText) }
         }
     }
 }

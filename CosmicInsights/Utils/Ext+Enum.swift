@@ -166,7 +166,7 @@ extension HKQuantityType {
         }
         else if self == HKQuantityType(.bloodPressureSystolic) {
             
-            return HealthDetailData(title: "Blood Pressure Systolic", subtitle: "Typical blood pressure as below 120 mm Hg systolic", amount: "", image: "bloodPressureSystolic", type: .HEART, color: Color.activityColor, date: Date(), healthType: HKQuantityType(.heartRate))
+            return HealthDetailData(title: "Blood Pressure Systolic", subtitle: "Typical blood pressure as below 120 mm Hg systolic", amount: "", image: "bloodPressureSystolic", type: .HEART, color: Color.activityColor, date: Date(), healthType: HKQuantityType(.bloodPressureSystolic))
         }
         else {
             

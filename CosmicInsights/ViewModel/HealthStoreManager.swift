@@ -47,7 +47,7 @@ class HealthStoreManager : ObservableObject {
             self.dispatchGroupDay.enter()
             let query =  HKSampleQuery(sampleType: types, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: []) { _, result, error in
                 guard let result = result,
-                      let data = result.first as? HKQuantitySample else {
+                      let data = result.last as? HKQuantitySample else {
                     var health = types.getHeaderDetails()
                     health.amount = "-----"
                     aHealthDataArray.append(health)
@@ -55,12 +55,11 @@ class HealthStoreManager : ObservableObject {
                     return
                 }
                 let quantity = data.quantity
-                print(quantity)
                 var health = data.quantityType.getHeaderDetails()
                 health.amount = "\(quantity)"
                 health.chartDigit = health.amount.digitFromString()
-                health.dateString = result[0].startDate.getDateFormat(format: "dd-MM-YY")
-                health.timeString = result[0].startDate.getDateFormat(format: "hh:mm")
+                health.dateString = (result.last?.startDate.getDateFormat(format: "dd-MM-YY"))!
+                health.timeString = (result.last?.startDate.getDateFormat(format: "hh:mm a"))!
                 aHealthDataArray.append(health)
                 self.dispatchGroupDay.leave()
                 
@@ -69,7 +68,6 @@ class HealthStoreManager : ObservableObject {
         }
         self.dispatchGroupDay.notify(queue: .main) {
             
-            print(aHealthDataArray)
             aHealthDataArray = aHealthDataArray.sorted { $0.title < $1.title }
             self.todayHealthValues = aHealthDataArray
         }
@@ -89,7 +87,7 @@ class HealthStoreManager : ObservableObject {
         
         if dateRange == "2 Days"{
             
-            startDate = Calendar.current.date(byAdding: .day, value: -1, to: today) ?? Date()
+            startDate = Calendar.current.date(byAdding: .day, value: -2, to: today) ?? Date()
         }
         else if dateRange == "Week"{
             
@@ -117,7 +115,7 @@ class HealthStoreManager : ObservableObject {
                 health.amount = "\(quantity)"
                 health.date = aValue.startDate
                 health.dateString = aValue.startDate.getDateFormat(format: "dd-MM-YY")
-                health.timeString = aValue.startDate.getDateFormat(format: "hh:mm")
+                health.timeString = aValue.startDate.getDateFormat(format: "hh:mm a")
                 
                 var calculateHighest = 0
                 //Logic to get highest chat value for the day
@@ -129,19 +127,14 @@ class HealthStoreManager : ObservableObject {
                     
                     calculateHighest = aHealthDataArray.filter{$0.dateString == health.dateString}.map {$0.amount.digitFromString()}.reduce(0, { $0 + $1 }) + health.amount.digitFromString()
                 }
-                print("Date -------->  \(health.dateString) \(calculateHighest)")
-                
                 health.chartDigit = calculateHighest
-                
                 aHealthDataArray.append(health)
-                
             }
             self.dispatchGroupWeek.leave()
         }
         healthStore.execute(query)
         
         self.dispatchGroupWeek.notify(queue: .main) {
-            print(aHealthDataArray)
             self.weekDatas = aHealthDataArray
         }
     }

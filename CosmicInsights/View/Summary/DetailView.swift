@@ -37,7 +37,6 @@ struct DetailView: View {
                 }
                 .pickerStyle(.segmented).padding(.leading,80)
             }.onChange(of: daysTab) { oldState, newState in
-                print(newState)
                     displayType = .list
                     healthManager.getWeekHealthDatas(type: healthData.healthType, dateRange: newState)
             }
@@ -139,10 +138,9 @@ struct HealthDetailChartView: View {
                     y: .value("Amount",health.animate ? health.amount.digitFromString() : 0)
                 ).foregroundStyle(health.color).annotation(position: .overlay, alignment: .top) {
                     
-//                    Text("\(health.amount.digitFromString())")
                 }
             
-        }.chartYScale(domain: 0...(((weekHealthDatas.map{$0.chartDigit}.max() ?? 0) + 200) )).onAppear {
+        }.chartYScale(domain: 0...(((weekHealthDatas.map{$0.chartDigit}.max() ?? 0)) )).onAppear {
             
             // Chart update animation
             for (index,_) in weekHealthDatas.enumerated() {

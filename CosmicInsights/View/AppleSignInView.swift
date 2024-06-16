@@ -84,7 +84,7 @@ struct AppleSignInButtonView: View {
     
     var healthManager : HealthStoreManager
     @Binding var showLoading : Bool
-    
+    @State var showAlert : Bool = false
     var body: some View {
         VStack {
             Spacer()
@@ -103,14 +103,19 @@ struct AppleSignInButtonView: View {
             . background(RoundedRectangle(cornerRadius: 8)
                 .fill(Color(.darkGray)))
             .shadow(color: .blue, radius: 8, x: 0, y: 5).padding(.bottom, 50)
-        }
+        }.alert(isPresented: $showAlert, content: {
+            Alert(title: Text("LOGIN"), message: Text(" Your account not support sign in with Apple capability"), primaryButton: .default(Text("Login as guest")) {
+                healthManager.loginSuccess = true
+            }, secondaryButton: .cancel())
+        })
     }
     
     private func loginSuccessHandler(with authorization: ASAuthorization) {
         if let userCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
-            print(userCredential.user)
+            UserDefaults.standard.set(userCredential.fullName?.givenName ?? "Guest", forKey: "userName")
+            healthManager.loginSuccess = true
             if userCredential.authorizedScopes.contains(.fullName) {
-                print(userCredential.fullName?.givenName ?? "No given name")
+                print(userCredential.fullName?.givenName ?? "")
             }
             if userCredential.authorizedScopes.contains(.email) {
                 print(userCredential.email ?? "No email")
@@ -119,6 +124,8 @@ struct AppleSignInButtonView: View {
     }
     
     private func loginFailedHandler(with error: Error) {
+//        showAlert = true
+        UserDefaults.standard.set("Mithun", forKey: "userName")
         print("Could not authenticate: \(error.localizedDescription)")
     }
 }
